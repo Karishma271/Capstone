@@ -1,0 +1,28 @@
+.slideshow-container {
+  max-width: 100%; /* Set a maximum width */
+  max-height: 500px; /* Set a maximum height */
+  margin: 0 auto;
+  overflow: hidden; /* Hide content that overflows the container */
+}
+
+.slide {
+  display: none;
+  width: fit-content;
+  height: fit-content;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.imgSlider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.active {
+  display: block;
+}
