@@ -1,0 +1,52 @@
+.organizer-form-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.organizer-form-container h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.organizer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.organizer-form label {
+  font-size: 16px;
+  color: #555;
+}
+
+.organizer-form input,
+.organizer-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.organizer-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.save-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #d32f2f;
+}

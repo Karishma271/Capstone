@@ -1,0 +1,75 @@
+/* Venue Page Container */
+.venue-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Title for Venue Page */
+.venue-container h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Button for Venue Actions (Add/Edit) */
+.add-venue-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.add-venue-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Form Styles (For Add/Edit Venue) */
+.venue-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.venue-form label {
+  font-size: 16px;
+  color: #555;
+}
+
+.venue-form input,
+.venue-form textarea,
+.venue-form select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.venue-form .venue-description {
+  resize: none;
+  height: 100px;
+}
+
+/* Responsive for smaller screens */
+@media screen and (max-width: 768px) {
+  .venue-container {
+    padding: 10px;
+  }
+
+  .venue-form input,
+  .venue-form textarea,
+  .venue-form select {
+    font-size: 12px;
+  }
+
+  .venue-form .add-venue-button {
+    padding: 8px;
+  }
+}

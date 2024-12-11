@@ -1,0 +1,39 @@
+/* Organizer.js specific styles */
+
+.organizer-page-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.organizer-heading {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.add-organizer-btn {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.add-organizer-btn:hover {
+  background-color: #388e3c;
+}
+
+.organizer-page-container button {
+  margin-bottom: 20px;
+}
+
+.organizer-page-container h2 {
+  font-size: 24px;
+  color: #333;
+}
+
