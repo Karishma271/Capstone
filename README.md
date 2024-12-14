@@ -9,7 +9,7 @@
 29 October 2024
 
 ## Project Description
-"UtsavVibes" is an event management portal developed with the MERN stack and integrated Stripe payment gateway. It simplifies event planning by allowing users to explore, book venues, and manage events seamlessly.
+"UtsavVibes" is an easy-to-use event management platform built with the MERN stack and Stripe payment integration. It helps users find and book venues for their events and manage everything smoothly from start to finish.
 
 ## Technology Used
 ### Front-end:
