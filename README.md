@@ -60,37 +60,33 @@
 ![Alt text](image-3.png)
 
 4) Events
+![Alt text](image15.png)
 ![Alt text](image-4.png)
-![Alt text](image-5.png)
 
 5) Venue
-![Alt text](image-6.png)
+![Alt text](image-5.png)
 
 6) Contact
-![Alt text](image-7.png)
+![Alt text](image-6.png)
 
 7) About
-![Alt text](image-8.png)
+![Alt text](image-7.png)
 
 8) Checkout
-![Alt text](image-9.png)
+![Alt text](image-8.png)
 
 9) Checkout 2 (Stripe payment)
+![Alt text](image-9.png)
 ![Alt text](image-10.png)
-![Alt text](image-11.png)
 
 10) Admin Dashboard
-![Alt text](image-12.png)
+![Alt text](image-11.png)
 
 11) Venue Management
-![Alt text](image-13.png)
+![Alt text](image-12.png)
 
 12) User Management
-![Alt text](image-14.png)
+![Alt text](image-13.png)
 
 13) Organizer Management
-![Alt text](image-15.png)
-
-## Accessibility Features
-- Tested with the Wave extension to ensure accessibility compliance.
-![Alt text](image.png)
+![Alt text](image-14.png)

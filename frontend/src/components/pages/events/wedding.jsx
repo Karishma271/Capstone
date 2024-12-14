@@ -3,6 +3,7 @@ import axios from 'axios';
 import './wedding.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Container, Paper, Typography } from '@mui/material';
 
 const Wedding = () => {
   const [brideName, setBrideName] = useState('');
@@ -65,92 +66,119 @@ const Wedding = () => {
     }
 
     try {
-      const response = await axios.post('/wedding', eventData);
+      // Send data to the backend (adjust URL accordingly)
+      const response = await axios.post('https://utsavvibesbackend.onrender.com/wedding', eventData);
+
+      // Success message
       setSuccessMessage(response.data.message);
+      setBrideName('');
+      setGroomName('');
+      setEventDate('');
+      setVenue('');
+      setEmail('');
+      setPhoneNumber('');
     } catch (error) {
       console.error('Error while saving data:', error);
+      setErrorMessages({ ...errorMessages, general: 'Failed to register the event. Please try again.' });
     }
   };
 
   return (
-    <div className="form-container">
-      <h2 className="form-heading">Wedding Event Planner Form</h2>
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-      <form onSubmit={handleSubmit} className="form">
-        <TextField
-          label="Bride's Name"
-          value={brideName}
-          onChange={(e) => {
-            setBrideName(e.target.value);
-            handleFieldChange('brideName', e.target.value);
-          }}
-          error={!!errorMessages.brideName}
-          helperText={errorMessages.brideName}
-          required
-        />
+    <Container className="form-container" maxWidth="sm">
+      <Paper className="form-paper" elevation={3}>
+        <Typography variant="h4" className="form-heading">
+          Wedding Event Planner Form
+        </Typography>
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+        {errorMessages.general && <p style={{ color: 'red' }}>{errorMessages.general}</p>}
+        <form onSubmit={handleSubmit} className="form">
+          <TextField
+            label="Bride's Name"
+            value={brideName}
+            onChange={(e) => {
+              setBrideName(e.target.value);
+              handleFieldChange('brideName', e.target.value);
+            }}
+            error={!!errorMessages.brideName}
+            helperText={errorMessages.brideName}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Groom's Name"
-          value={groomName}
-          onChange={(e) => {
-            setGroomName(e.target.value);
-            handleFieldChange('groomName', e.target.value);
-          }}
-          error={!!errorMessages.groomName}
-          helperText={errorMessages.groomName}
-          required
-        />
+          <TextField
+            label="Groom's Name"
+            value={groomName}
+            onChange={(e) => {
+              setGroomName(e.target.value);
+              handleFieldChange('groomName', e.target.value);
+            }}
+            error={!!errorMessages.groomName}
+            helperText={errorMessages.groomName}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          type="date"
-          value={eventDate}
-          onChange={(e) => setEventDate(e.target.value)}
-          required
-        />
+          <TextField
+            type="date"
+            value={eventDate}
+            onChange={(e) => setEventDate(e.target.value)}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Venue"
-          value={venue}
-          onChange={(e) => {
-            setVenue(e.target.value);
-            handleFieldChange('venue', e.target.value);
-          }}
-          error={!!errorMessages.venue}
-          helperText={errorMessages.venue}
-          required
-        />
+          <TextField
+            label="Venue"
+            value={venue}
+            onChange={(e) => {
+              setVenue(e.target.value);
+              handleFieldChange('venue', e.target.value);
+            }}
+            error={!!errorMessages.venue}
+            helperText={errorMessages.venue}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Email"
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            handleFieldChange('email', e.target.value);
-          }}
-          error={!!errorMessages.email}
-          helperText={errorMessages.email}
-          required
-        />
+          <TextField
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              handleFieldChange('email', e.target.value);
+            }}
+            error={!!errorMessages.email}
+            helperText={errorMessages.email}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Phone Number"
-          type="tel"
-          value={phoneNumber}
-          onChange={(e) => {
-            setPhoneNumber(e.target.value);
-            handleFieldChange('phoneNumber', e.target.value);
-          }}
-          error={!!errorMessages.phoneNumber}
-          helperText={errorMessages.phoneNumber}
-          required
-        />
+          <TextField
+            label="Phone Number"
+            type="tel"
+            value={phoneNumber}
+            onChange={(e) => {
+              setPhoneNumber(e.target.value);
+              handleFieldChange('phoneNumber', e.target.value);
+            }}
+            error={!!errorMessages.phoneNumber}
+            helperText={errorMessages.phoneNumber}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <Button type="submit" variant="contained" color="primary" className="submit-button">
-          Submit
-        </Button>
-      </form>
-    </div>
+          <Button type="submit" variant="contained" color="primary" className="submit-button">
+            Submit
+          </Button>
+        </form>
+      </Paper>
+    </Container>
   );
 };
 

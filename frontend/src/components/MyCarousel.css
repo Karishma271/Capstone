@@ -1,17 +1,17 @@
-.Carousel1{
-    background-color: rgb(226, 230, 230);
+.Carousel1 {
+    background-color: #FFF5E6; /* Soft Ivory */
     display: flex;
     align-items: center;
     height: 60vh;
 }
 
-.innerDiv{
-    background-color:rgb(255, 254, 254);
+.innerDiv {
+    background-color: #FFF8E1; /* Light Gold */
     height: 90%;
     width: 90%;
     padding: 10%;
     margin-left: 30px;
-    border: 3px solid; 
+    border: 3px solid #FF9933; /* Saffron */
     border-radius: 20px;
     display: flex; 
     align-items: center;

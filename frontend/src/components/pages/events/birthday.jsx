@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Container, Paper, Typography } from '@mui/material';
+import "./birthday.css";
 
 const Birthday = () => {
   const [personName, setPersonName] = useState('');
@@ -51,6 +53,7 @@ const Birthday = () => {
     const eventData = { personName, eventDate, venue, email, phoneNumber };
     let isValid = true;
 
+    // Validate each field
     for (const fieldName of Object.keys(eventData)) {
       if (!validateField(fieldName, eventData[fieldName])) {
         handleFieldChange(fieldName, eventData[fieldName]);
@@ -63,80 +66,104 @@ const Birthday = () => {
     }
 
     try {
-      const response = await axios.post('/birthday', eventData);
+      // Send data to the backend (adjust URL accordingly)
+      const response = await axios.post('https://utsavvibesbackend.onrender.com/birthday', eventData);
+
+      // Success message
       setSuccessMessage(response.data.message);
+      setPersonName('');
+      setEventDate('');
+      setVenue('');
+      setEmail('');
+      setPhoneNumber('');
     } catch (error) {
       console.error('Error while saving data:', error);
+      setErrorMessages({ ...errorMessages, general: 'Failed to register the event. Please try again.' });
     }
   };
 
   return (
-    <div className="form-container">
-      <h2 className="form-heading">Birthday Event Planner Form</h2>
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-      <form onSubmit={handleSubmit} className="form">
-        <TextField
-          label="Person Name"
-          value={personName}
-          onChange={(e) => {
-            setPersonName(e.target.value);
-            handleFieldChange('personName', e.target.value);
-          }}
-          error={!!errorMessages.personName}
-          helperText={errorMessages.personName}
-          required
-        />
+    <Container className="form-container" maxWidth="sm">
+      <Paper className="form-paper" elevation={3}>
+        <Typography variant="h4" className="form-heading">
+          Birthday Event Planner Form
+        </Typography>
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+        {errorMessages.general && <p style={{ color: 'red' }}>{errorMessages.general}</p>}
+        <form onSubmit={handleSubmit} className="form">
+          <TextField
+            label="Person Name"
+            value={personName}
+            onChange={(e) => {
+              setPersonName(e.target.value);
+              handleFieldChange('personName', e.target.value);
+            }}
+            error={!!errorMessages.personName}
+            helperText={errorMessages.personName}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          type="date"
-          value={eventDate}
-          onChange={(e) => setEventDate(e.target.value)}
-          required
-        />
+          <TextField
+            type="date"
+            value={eventDate}
+            onChange={(e) => setEventDate(e.target.value)}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Venue"
-          value={venue}
-          onChange={(e) => {
-            setVenue(e.target.value);
-            handleFieldChange('venue', e.target.value);
-          }}
-          error={!!errorMessages.venue}
-          helperText={errorMessages.venue}
-          required
-        />
+          <TextField
+            label="Venue"
+            value={venue}
+            onChange={(e) => {
+              setVenue(e.target.value);
+              handleFieldChange('venue', e.target.value);
+            }}
+            error={!!errorMessages.venue}
+            helperText={errorMessages.venue}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Email"
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            handleFieldChange('email', e.target.value);
-          }}
-          error={!!errorMessages.email}
-          helperText={errorMessages.email}
-          required
-        />
+          <TextField
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              handleFieldChange('email', e.target.value);
+            }}
+            error={!!errorMessages.email}
+            helperText={errorMessages.email}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Phone Number"
-          type="tel"
-          value={phoneNumber}
-          onChange={(e) => {
-            setPhoneNumber(e.target.value);
-            handleFieldChange('phoneNumber', e.target.value);
-          }}
-          error={!!errorMessages.phoneNumber}
-          helperText={errorMessages.phoneNumber}
-          required
-        />
+          <TextField
+            label="Phone Number"
+            type="tel"
+            value={phoneNumber}
+            onChange={(e) => {
+              setPhoneNumber(e.target.value);
+              handleFieldChange('phoneNumber', e.target.value);
+            }}
+            error={!!errorMessages.phoneNumber}
+            helperText={errorMessages.phoneNumber}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <Button type="submit" variant="contained" color="primary" className="submit-button">
-          Submit
-        </Button>
-      </form>
-    </div>
+          <Button type="submit" variant="contained" color="primary" className="submit-button">
+            Submit
+          </Button>
+        </form>
+      </Paper>
+    </Container>
   );
 };
 

@@ -65,7 +65,7 @@ export const Navbar = (userRole) => {
             {user === 'admin' ? (
         <List>
           {/* Admin links */}
-          {["Venue", "User Management", "Dashboard", "Organizer"].map(
+          {["Venue", "User", "Dashboard", "Organizer"].map(
             (text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton >
@@ -163,7 +163,7 @@ export const Navbar = (userRole) => {
     }
 
     const handleVenueClick = () => {
-        navigate("/Venue")
+        navigate("/Venues")
     }
 
     const handleUserManagementClick = () => {

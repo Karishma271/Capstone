@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "10.15.3"
+    "node": "22.x"
   },
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -37,7 +37,7 @@
     "use-history": "^1.4.1",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "http://localhost:4500",
+  "proxy": "https://utsavvibesbackend.onrender.com", 
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

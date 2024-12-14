@@ -22,7 +22,7 @@ class PreferredLocationMap extends Component {
     new window.google.maps.Marker({
       position: { lat: 43.3977, lng: -80.4028 }, 
       map: map,
-      title: 'Conestoga College', // Set the title for Conestoga College
+      title: 'Humber College', // Set the title for Humber College
     });
   };
 

@@ -14,19 +14,19 @@ const Organizer = () => {
 
   const fetchOrganizers = async () => {
     try {
-      const response = await axios.get('/api/organizers');
-      console.log('Fetched Organizers:', response.data); // Add debugging logs
+      // Fetch backend URL from environment variables
+      const apiUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await axios.get(`${apiUrl}/api/organizers`);
+      
+      console.log('Fetched Organizers:', response.data); 
       setOrganizers(response.data);
     } catch (error) {
-      console.error('Error fetching organizers:', error);
+      console.error('Error fetching organizers:', error.message || error);
     }
   };
 
-  
-
   return (
     <div className="organizer-page-container">
-      
       <OrganizerList organizers={organizers} />
     </div>
   );

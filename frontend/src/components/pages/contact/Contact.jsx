@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { TextField, Button, Grid, Typography } from "@mui/material";
-import contactImage from "../../../assets/images/event3.png";
-import "./contact.css";
+import { TextField, Button, Grid, Typography, Snackbar, Alert } from "@mui/material";
+import "./contact.css"; // Make sure to include the appropriate CSS file for styling
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +16,10 @@ const ContactForm = () => {
     email: "",
     phoneNumber: "",
     subject: "",
+    message: "",
   });
+
+  const [successMessage, setSuccessMessage] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,13 +28,13 @@ const ContactForm = () => {
 
   const validateForm = () => {
     let isValid = true;
-    const newErrors = { name: "", email: "", phoneNumber: "", subject: "" };
+    const newErrors = { name: "", email: "", phoneNumber: "", subject: "", message: "" };
 
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
       isValid = false;
-    } else if (!/^[a-zA-Z]+$/.test(formData.name.trim())) {
-      newErrors.name = "Name should contain only alphabets";
+    } else if (!/^[a-zA-Z ]+$/.test(formData.name.trim())) {
+      newErrors.name = "Name should contain only alphabets and spaces";
       isValid = false;
     }
 
@@ -43,16 +45,18 @@ const ContactForm = () => {
     }
 
     const phoneRegex = /^\d{10}$/; // Assuming a 10-digit phone number
-    if (
-      !formData.phoneNumber.trim() ||
-      !phoneRegex.test(formData.phoneNumber)
-    ) {
+    if (!formData.phoneNumber.trim() || !phoneRegex.test(formData.phoneNumber)) {
       newErrors.phoneNumber = "Invalid phone number";
       isValid = false;
     }
 
     if (!formData.subject.trim()) {
       newErrors.subject = "Subject is required";
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
       isValid = false;
     }
 
@@ -64,7 +68,8 @@ const ContactForm = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log(formData);
+      console.log("Form Data Submitted: ", formData);
+      setSuccessMessage(true);
       setFormData({
         name: "",
         email: "",
@@ -78,21 +83,17 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="container">
-      {/* <div style={{ width: '100%' }}>
-        <img className='img' src={contactImage} alt='img' style={{ width: '100%', height: '100%' }} />
-      </div> */}
-      <Typography textAlign="center" variant="h1" fontSize="3rem" gutterBottom>
+    <div className="contact-container">
+      <Typography textAlign="center" variant="h4" fontSize="2.5rem" gutterBottom>
         Contact Us
       </Typography>
-      <form onSubmit={handleSubmit}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
+      <form onSubmit={handleSubmit} className="contact-form">
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
             <TextField
               label="Name"
               name="name"
               fullWidth
-              required
               variant="outlined"
               value={formData.name}
               onChange={handleChange}
@@ -100,25 +101,11 @@ const ContactForm = () => {
               helperText={errors.name}
             />
           </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Email"
-              name="email"
-              fullWidth
-              required
-              variant="outlined"
-              value={formData.email}
-              onChange={handleChange}
-              error={!!errors.email}
-              helperText={errors.email}
-            />
-          </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={6}>
             <TextField
               label="Phone Number"
               name="phoneNumber"
               fullWidth
-              required
               variant="outlined"
               value={formData.phoneNumber}
               onChange={handleChange}
@@ -128,10 +115,21 @@ const ContactForm = () => {
           </Grid>
           <Grid item xs={12}>
             <TextField
+              label="Email"
+              name="email"
+              fullWidth
+              variant="outlined"
+              value={formData.email}
+              onChange={handleChange}
+              error={!!errors.email}
+              helperText={errors.email}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
               label="Subject"
               name="subject"
               fullWidth
-              required
               variant="outlined"
               value={formData.subject}
               onChange={handleChange}
@@ -144,11 +142,13 @@ const ContactForm = () => {
               label="Message"
               name="message"
               fullWidth
-              required
               variant="outlined"
+              multiline
               rows={4}
               value={formData.message}
               onChange={handleChange}
+              error={!!errors.message}
+              helperText={errors.message}
             />
           </Grid>
         </Grid>
@@ -163,6 +163,18 @@ const ContactForm = () => {
           Submit
         </Button>
       </form>
+
+      {/* Success Snackbar */}
+      <Snackbar
+        open={successMessage}
+        autoHideDuration={3000}
+        onClose={() => setSuccessMessage(false)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert severity="success" onClose={() => setSuccessMessage(false)}>
+          Form submitted successfully!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

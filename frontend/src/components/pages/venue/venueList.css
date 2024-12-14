@@ -1,64 +1,92 @@
+/* venueList.css */
+
+/* Container for the entire venue list */
 .fp {
-    width: 100%;
-    display: flex;
-    gap: 20px;
-    padding: 10px;
-    flex-wrap: nowrap;
-    /* Disable wrapping to ensure horizontal layout */
-    overflow-x: auto;
-    /* Enable horizontal scrolling */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px; /* Limit max width to reduce excessive white space */
+  padding: 20px;
 }
 
+/* Style for each venue item */
 .fpItem {
-    flex: 1;
-    gap: 10px;
-    display: flex;
-    transition: 0.3s ease-in-out;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 8px;
-    overflow: hidden;
-    flex-direction: column;
-    width: 300px;
-    /* Set a fixed width for each item */
-    margin: 10px;
-    /* Add margin for spacing */
+  width: calc(33.333% - 20px); /* 3 columns layout */
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: relative;
 }
 
-.fpItem:hover {
-    transition: 0.3s ease-in-out;
-    transform: scale(1.05);
+/* Ensures that the image takes up proper space */
+.fpItem img {
+  width: 100%;
+  height: 200px; /* Set fixed height for consistency */
+  object-fit: cover; /* Ensures the image is cropped correctly */
+  display: block;
 }
 
-.fpImg {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 0px;
-}
-
+/* Title of the venue */
 .fpName {
-    font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px;
 }
 
-.fpName,
-.fpCity,
-.fpPrice {
-    color: rgb(0, 0, 0);
-    padding: 4px;
+/* Address and other venue details */
+.fpCity, .fpOccasion, .fpCapacity, .fpPayments, .fpDescription {
+  display: block;
+  margin: 8px 10px;
+  color: #555;
 }
 
+.fpCity, .fpOccasion {
+  font-size: 1rem;
+}
+
+/* Payment icons */
+.fpPayments {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.fpPayments svg {
+  margin-right: 5px;
+}
+
+/* If the description is present, it should be styled nicely */
+.fpDescription {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 10px 10px;
+}
+
+/* Handle no image condition */
+.noImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc;
+  color: #fff;
+  height: 200px;
+  text-align: center;
+}
+
+/* For better mobile responsiveness */
 @media (max-width: 768px) {
-    .fp {
-        overflow-x: auto;
-        /* Enable horizontal scrolling for mobile screens */
-        flex-wrap: nowrap;
-        /* Disable wrapping for small screens */
-    }
+  .fpItem {
+    width: calc(50% - 10px); /* 2 columns on small screens */
+  }
+}
 
-    .fpItem {
-        width: auto;
-        /* Allow items to take their natural width */
-        flex: 0 0 auto;
-        /* Disable flex-grow for individual items */
-    }
+@media (max-width: 480px) {
+  .fpItem {
+    width: 100%; /* Single column on mobile */
+  }
 }

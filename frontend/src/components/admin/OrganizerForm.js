@@ -16,16 +16,22 @@ const OrganizerForm = () => {
     contactNumber: "",
   });
 
+  // Fetch Backend URL from Environment Variable
+  const apiUrl = process.env.REACT_APP_BACKEND_URL;
+
   useEffect(() => {
     if (id) {
+      // Fetch organizer details for edit
       axios
-        .get(`/api/organizers/${id}`)
+        .get(`${apiUrl}/api/organizers/${id}`)
         .then((response) => {
           setFormData(response.data);
         })
-        .catch((error) => console.error("Error fetching organizer:", error));
+        .catch((error) =>
+          console.error("Error fetching organizer:", error.message)
+        );
     }
-  }, [id]);
+  }, [id, apiUrl]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,13 +44,16 @@ const OrganizerForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Choose API request type: PUT for update, POST for create
     const apiRequest = id
-      ? axios.put(`/api/organizers/${id}`, formData) 
-      : axios.post("/api/organizers", formData); 
+      ? axios.put(`${apiUrl}/api/organizers/${id}`, formData)
+      : axios.post(`${apiUrl}/api/organizers`, formData);
 
     apiRequest
       .then(() => navigate("/Organizers"))
-      .catch((error) => console.error("Error saving organizer:", error));
+      .catch((error) =>
+        console.error("Error saving organizer:", error.message || error)
+      );
   };
 
   return (

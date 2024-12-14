@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/pages/login/Login';
 import Signup from './components/pages/signup/Signup';
 import Header from './components/header/Header';
-import ShubhPrasangAboutUs from './components/pages/about/About';
+import UtsavVibesAboutUs from './components/pages/about/About';
 import ContactForm from './components/pages/contact/Contact';
 import EventPage from './components/pages/events/Events';
 import Wedding from './components/pages/events/wedding';
@@ -13,7 +13,7 @@ import Corporate from './components/pages/events/corporate';
 import HomePage from './components/pages/home/Home';
 import Footer from './components/footer/Footer';
 import Venue from './components/admin/Venue';
-import Usermgmt from './components/admin/User';
+import User from './components/admin/User';
 import Dashboard from './components/admin/Dashboard';
 import Organizer from './components/admin/Organizer';  // Main Organizer Page (Organizer.js)
 import OrganizerForm from './components/admin/OrganizerForm';  // Add/Edit Organizer (OrganizerForm.js)
@@ -40,14 +40,14 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<Signup/>} />
-          <Route path="/about" element={<ShubhPrasangAboutUs/>} />
+          <Route path="/about" element={<UtsavVibesAboutUs/>} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/events" element={<EventPage/>} />
           <Route path="/wedding" element={<Wedding />} />
           <Route path="/birthday" element={<Birthday />} />
           <Route path="/corporate" element={<Corporate />} />
          
-          <Route path='/Usermgmt' element={<Usermgmt/>}/>
+          <Route path='/User' element={<User />} />
           <Route path='/Dashboard' element={<Dashboard/>}/>
 
           {/* Routes for Organizer */}

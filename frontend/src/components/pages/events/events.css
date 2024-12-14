@@ -1,31 +1,57 @@
-/* events.css */
 .event-page-container {
-    text-align: center;
     padding: 20px;
-}
-
-.event-card {
-    flex: 1;
-    gap: 10px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+  
+  .event-page-container h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .event-list {
     display: flex;
-    flex-direction: column;
-    transition: 0.3s ease-in-out;
-}
-
-.event-card:hover {
-    transition: 0.3s ease-in-out;
-    transform: scaleY(1.05);
-}
-
-.imgEvent {
-    width: 100%;
-    height: auto;
-    border-radius: 0;
-    /* Remove the border-radius */
-}
-
-.eventBtn {
-    margin-top: 10px;
-    width: 100%;
-    transition: 0.3s ease-in-out;
-}
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .event-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .event-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .imgEvent {
+    border-radius: 10px;
+  }
+  
+  .MuiTypography-h1 {
+    font-size: 2rem;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  

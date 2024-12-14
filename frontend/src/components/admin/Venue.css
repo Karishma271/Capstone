@@ -56,7 +56,20 @@
   resize: none;
   height: 100px;
 }
+.add-venue-btn {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
 
+.add-venue-btn:hover {
+  background-color: #388e3c;
+}
 /* Responsive for smaller screens */
 @media screen and (max-width: 768px) {
   .venue-container {

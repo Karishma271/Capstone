@@ -1,32 +1,32 @@
 {
   "files": {
-    "main.css": "/static/css/main.54506512.css",
-    "main.js": "/static/js/main.b768fc5f.js",
-    "static/js/787.04bab7fe.chunk.js": "/static/js/787.04bab7fe.chunk.js",
+    "main.css": "/static/css/main.ef0c25ce.css",
+    "main.js": "/static/js/main.0d861574.js",
+    "static/js/651.1838c502.chunk.js": "/static/js/651.1838c502.chunk.js",
     "static/media/event1.png": "/static/media/event1.cf170abd3936f37926bb.png",
     "static/media/event3.png": "/static/media/event3.a35d98136ab223673f3d.png",
     "static/media/event2.png": "/static/media/event2.b1a1fb80d47e45444a04.png",
     "static/media/event4.png": "/static/media/event4.9a88cfa6f49cbb55d2b4.png",
-    "static/media/Karishma.png": "/static/media/karishma.0760c1e2b39ec1d1fa77.jpg",
-    "static/media/cracy.png": "/static/media/cracy.280eea79aad5425c6ed5.jpg",
+    "static/media/Karishma.jpg": "/static/media/Karishma.de46a0b0fe13ce32d07d.jpg",
     "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.d75e3fd1eb12e9bd6655.ttf",
+    "static/media/Urvi.jpg": "/static/media/Urvi.9dd39c6fa8fbfdf64cc5.jpg",
+    "static/media/Cracy.jpg": "/static/media/Cracy.8f35f52864ea17253800.jpg",
     "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.016b4a6cdced82ab3aa1.ttf",
+    "static/media/Shaily.jpg": "/static/media/Shaily.d1c303059ea493b4a4ee.jpg",
     "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.b6879d41b0852f01ed5b.woff2",
     "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.878f31251d960bd6266f.woff2",
     "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.50701fbb8177c2dde530.ttf",
+    "static/media/logo.png": "/static/media/logo.b07cb833c2c46ce6dffa.png",
     "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.b041b1fa4fe241b23445.woff2",
-    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
-    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.c6a0c95b0a95c4553700.ttf",
-    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.1bac2991f3dbfa237aec.woff2",
     "index.html": "/index.html",
-    "main.54506512.css.map": "/static/css/main.54506512.css.map",
-    "main.b768fc5f.js.map": "/static/js/main.b768fc5f.js.map",
-    "787.04bab7fe.chunk.js.map": "/static/js/787.04bab7fe.chunk.js.map"
+    "main.ef0c25ce.css.map": "/static/css/main.ef0c25ce.css.map",
+    "main.0d861574.js.map": "/static/js/main.0d861574.js.map",
+    "651.1838c502.chunk.js.map": "/static/js/651.1838c502.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.54506512.css",
-    "static/js/main.b768fc5f.js"
+    "static/css/main.ef0c25ce.css",
+    "static/js/main.0d861574.js"
   ]
 }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './corporate.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Container, Paper, Typography } from '@mui/material';
 
 const Corporate = () => {
   const [companyName, setCompanyName] = useState('');
@@ -64,80 +65,104 @@ const Corporate = () => {
     }
 
     try {
-      const response = await axios.post('/corporate', eventData);
+      // Send data to the backend (adjust URL accordingly)
+      const response = await axios.post('https://utsavvibesbackend.onrender.com/corporate', eventData);
+
+      // Success message
       setSuccessMessage(response.data.message);
+      setCompanyName('');
+      setEventDate('');
+      setVenue('');
+      setEmail('');
+      setPhoneNumber('');
     } catch (error) {
       console.error('Error while saving data:', error);
+      setErrorMessages({ ...errorMessages, general: 'Failed to register the event. Please try again.' });
     }
   };
 
   return (
-    <div className="form-container">
-      <h2 className="form-heading">Corporate Event Planner Form</h2>
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-      <form onSubmit={handleSubmit} className="form">
-        <TextField
-          label="Company Name"
-          value={companyName}
-          onChange={(e) => {
-            setCompanyName(e.target.value);
-            handleFieldChange('companyName', e.target.value);
-          }}
-          error={!!errorMessages.companyName}
-          helperText={errorMessages.companyName}
-          required
-        />
+    <Container className="form-container" maxWidth="sm">
+      <Paper className="form-paper" elevation={3}>
+        <Typography variant="h4" className="form-heading">
+          Corporate Event Planner Form
+        </Typography>
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+        {errorMessages.general && <p style={{ color: 'red' }}>{errorMessages.general}</p>}
+        <form onSubmit={handleSubmit} className="form">
+          <TextField
+            label="Company Name"
+            value={companyName}
+            onChange={(e) => {
+              setCompanyName(e.target.value);
+              handleFieldChange('companyName', e.target.value);
+            }}
+            error={!!errorMessages.companyName}
+            helperText={errorMessages.companyName}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          type="date"
-          value={eventDate}
-          onChange={(e) => setEventDate(e.target.value)}
-          required
-        />
+          <TextField
+            type="date"
+            value={eventDate}
+            onChange={(e) => setEventDate(e.target.value)}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Venue"
-          value={venue}
-          onChange={(e) => {
-            setVenue(e.target.value);
-            handleFieldChange('venue', e.target.value);
-          }}
-          error={!!errorMessages.venue}
-          helperText={errorMessages.venue}
-          required
-        />
+          <TextField
+            label="Venue"
+            value={venue}
+            onChange={(e) => {
+              setVenue(e.target.value);
+              handleFieldChange('venue', e.target.value);
+            }}
+            error={!!errorMessages.venue}
+            helperText={errorMessages.venue}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Email"
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            handleFieldChange('email', e.target.value);
-          }}
-          error={!!errorMessages.email}
-          helperText={errorMessages.email}
-          required
-        />
+          <TextField
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              handleFieldChange('email', e.target.value);
+            }}
+            error={!!errorMessages.email}
+            helperText={errorMessages.email}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <TextField
-          label="Phone Number"
-          type="tel"
-          value={phoneNumber}
-          onChange={(e) => {
-            setPhoneNumber(e.target.value);
-            handleFieldChange('phoneNumber', e.target.value);
-          }}
-          error={!!errorMessages.phoneNumber}
-          helperText={errorMessages.phoneNumber}
-          required
-        />
+          <TextField
+            label="Phone Number"
+            type="tel"
+            value={phoneNumber}
+            onChange={(e) => {
+              setPhoneNumber(e.target.value);
+              handleFieldChange('phoneNumber', e.target.value);
+            }}
+            error={!!errorMessages.phoneNumber}
+            helperText={errorMessages.phoneNumber}
+            required
+            fullWidth
+            margin="normal"
+          />
 
-        <Button type="submit" variant="contained" color="primary" className="submit-button">
-          Submit
-        </Button>
-      </form>
-    </div>
+          <Button type="submit" variant="contained" color="primary" className="submit-button">
+            Submit
+          </Button>
+        </form>
+      </Paper>
+    </Container>
   );
 };
 

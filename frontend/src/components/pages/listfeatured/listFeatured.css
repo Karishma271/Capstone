@@ -1,150 +1,98 @@
-.hallContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
+/* General Wrapper */
 .hallWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
     padding: 20px;
-}
-
-.bookNow {
-    position: absolute;
-    top: 10px;
-    right: 0;
-    border: none;
-    padding: 10px 20px;
-    background-color: #000000;
-    color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Title Styling */
+  .hallTitle {
+    font-size: 2.5rem;
     font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.hallTitle {
-    font-size: 38px;
-    color: black;
-}
-
-.hallAddress {
-    font-size: 16px;
-    gap: 10px;
-}
-
-.hallDistance {
-    color: #6f6d6b;
-    font-weight: 500;
-}
-
-.hallPriceHighlight {
-    color: #158009;
-    font-weight: 500;
-}
-
-.hallImages {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  /* Address Styling */
+  .hallAddress {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.hallImgWrapper {
-    width: 35%;
-}
-
-.hallImg {
-    width: 100%;
-    object-fit: cover;
-    cursor: pointer;
-}
-
-.hallDetails {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.hallDesc {
-    font-size: 14px;
-    margin-top: 20px;
-}
-
-.hallDetailsPrice {
-    flex: 1;
-    background-color: #A0E4CB;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    gap: 20px;
-}
-
-.hallDetailsPrice>h1 {
-    font-size: 22px;
+    align-items: center;
+    margin-bottom: 15px;
     color: #555;
-}
-
-.hallDetailsPrice>span {
-    font-size: 18px;
-}
-
-.hallDetailsPrice>h2 {
-    font-weight: 300;
-}
-
-.hallDetailsPrice>button {
-    border: none;
-    padding: 10px 20px;
-    background-color: #000407;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.slider {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.613);
-    z-index: 999;
-    display: flex;
-    align-items: center;
-}
-
-.sliderWrapper {
+  }
+  
+  .hallAddress svg {
+    margin-right: 8px;
+  }
+  
+  /* Images Styling */
+  .hallImages {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .hallImg {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Capacity */
+  .fpName {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #555;
     display: flex;
-    justify-content: center;
     align-items: center;
-}
-
-.sliderImg {
-    width: 80%;
-    height: 80vh;
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 30px;
-    color: lightgray;
+    margin-bottom: 15px;
+  }
+  
+  .fpName svg {
+    margin-left: 5px;
+  }
+  
+  /* Hall Details */
+  .hallDetails {
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  .hallDetails h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .hallDetails p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  /* Button Styling */
+  .hallDetailsPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
     cursor: pointer;
-}
-
-.arrow {
-    margin: 20px;
-    font-size: 50px;
-    color: lightgray;
-    cursor: pointer;
-}
+    transition: background-color 0.3s ease;
+    display: block;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #e53935;
+  }
+  

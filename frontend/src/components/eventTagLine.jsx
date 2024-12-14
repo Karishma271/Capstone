@@ -21,8 +21,9 @@ const Description = styled.p`
 const EventTagline = () => {
   return (
     <EventTaglineContainer>
-      <Tagline>UtsavVibes Event Portal</Tagline>
-      <Description>We Turn Your Ideas into Unforgettable Moments.</Description>
+      <Tagline>UtsavVibes Event Hub</Tagline>
+      <Description>Bringing your dreams to life, one unforgettable event at a time.
+      Let me know if there's anything else you'd like to tweak!</Description>
     </EventTaglineContainer>
   );
 };

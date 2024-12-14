@@ -40,23 +40,24 @@ function HomePage() {
         <section className='homeSection'>
           <h2>About Us</h2>
           <p>
-          UtsavVibes Events crafts unforgettable experiences. 
-          From corporate gatherings to magical weddings, our expert team ensures seamless, 
-          personalized events that reflect your unique style. Join us in creating lasting memories.
+          UtsavVibes Events crafts unforgettable experiences. From corporate gatherings to magical weddings, 
+          our expert team ensures seamless, personalized events that reflect your unique style. Join us in 
+          creating lasting memories with UtsavVibes, where every detail is tailored to perfection and every 
+          moment is unforgettable.
           </p>
         </section>
         <section className='homeSection'>
           <h2>Services</h2>
           <p>
-          UtsavVibes Events offers a diverse array of services tailored to your requirements. 
-          Our offerings include comprehensive event planning and execution, 
-          ensuring a seamless and unforgettable experience for you and your guests.
+          UtsavVibes Events caters to your unique needs with a diverse array of services. We offer comprehensive 
+          event planning and execution, ensuring that every occasion is seamless and unforgettable for you and 
+          your guests. Let us handle the details while you enjoy the experience.
           </p>
         </section>
         <section className='homeSection'>
           <h2>Contact Us</h2>
           <p>
-          For any inquiries or to get in touch, please reach out to us. We look forward to hearing from you.  
+          For any inquiries or to get in touch with us, please don't hesitate to reach out. We're excited to hear from you and help make your event dreams a reality.
           </p>
         </section>
         </div>

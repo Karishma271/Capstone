@@ -10,8 +10,9 @@ import {
   CssBaseline,
   Avatar,
 } from "@mui/material";
-import bcrypt from "bcryptjs";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import bcrypt from "bcryptjs";
+import "./signup.css";  // Import the custom CSS file
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -37,10 +38,11 @@ const Signup = () => {
     setErrors({});
   };
 
-  const handleSubmit = async () => {
-    // Validate fields
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const newErrors = {};
 
+    // Input Validation
     if (!/^[A-Za-z0-9]+$/.test(formData.username)) {
       newErrors.username = "Username should only contain letters and numbers.";
     }
@@ -68,7 +70,6 @@ const Signup = () => {
     if (Object.keys(newErrors).length === 0) {
       const hashedPassword = await bcrypt.hash(formData.password, 10);
 
-      // Create a new user object with the hashed password
       const newUser = {
         username: formData.username,
         email: formData.email,
@@ -78,16 +79,17 @@ const Signup = () => {
       };
 
       try {
-        const response = await fetch("/api/signup", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(newUser),
+          credentials: "include", // Ensure cookies are sent (if needed)
         });
 
-        if (response.status === 200) {
-          setSuccessMessage("Registered successfully!");
+        if (response.status === 201) {
+          setSuccessMessage("Registered successfully! Please log in.");
           setIsRegistered(true);
           setFormData({
             username: "",
@@ -98,12 +100,11 @@ const Signup = () => {
             secretKey: "",
             phone: "",
           });
-          clearErrors(); // Clear errors when the form is reset
-        } else if (response.status === 400) {
-          newErrors.server = "User already exists!";
-          setErrors(newErrors);
+          clearErrors();
         } else {
-          setSuccessMessage("Signup failed. Please try again.");
+          const errorData = await response.json();
+          newErrors.server = errorData.message || "Signup failed. Please try again.";
+          setErrors(newErrors);
         }
       } catch (error) {
         console.error("Error:", error);
@@ -115,28 +116,16 @@ const Signup = () => {
   };
 
   return (
-    <Container component="main" sx={{ marginTop: 4 }} maxWidth="xs">
+    <Container component="main" className="form-container" maxWidth="xs">
       <CssBaseline />
-      <Paper
-        sx={{
-          padding: 2,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+      <Paper className="MuiPaper-root">
+        <Avatar className="MuiAvatar-root">
           <LockOutlinedIcon />
         </Avatar>
-        <Typography
-          textAlign="center"
-          variant="h1"
-          fontSize="2rem"
-          gutterBottom
-        >
+        <Typography variant="h1" gutterBottom>
           Sign up
         </Typography>
-        <form noValidate>
+        <form onSubmit={handleSubmit} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -150,7 +139,6 @@ const Signup = () => {
                 required
               />
             </Grid>
-
             <Grid item xs={12}>
               <TextField
                 name="email"
@@ -163,7 +151,6 @@ const Signup = () => {
                 required
               />
             </Grid>
-
             <Grid item xs={12}>
               <TextField
                 name="phone"
@@ -176,7 +163,6 @@ const Signup = () => {
                 required
               />
             </Grid>
-
             <Grid item xs={12}>
               <TextField
                 name="role"
@@ -235,22 +221,25 @@ const Signup = () => {
           </Grid>
 
           <Button
-            onClick={handleSubmit}
+            type="submit"
             variant="contained"
             color="primary"
             fullWidth
-            sx={{ mt: 2 }}
           >
-            Signup
+            Sign Up
           </Button>
         </form>
 
         {errors.server && (
-          <Typography variant="body2" color="error" sx={{ mt: 1 }}>
+          <Typography variant="body2" color="error">
             {errors.server}
           </Typography>
         )}
-        {successMessage && <div>{successMessage}</div>}
+        {successMessage && (
+          <Typography variant="body2" color="green">
+            {successMessage}
+          </Typography>
+        )}
       </Paper>
     </Container>
   );

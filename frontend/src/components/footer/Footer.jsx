@@ -1,72 +1,47 @@
 import React from 'react';
-import styled from 'styled-components';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import "./footer.css"
-
-const MainContent = styled.div`
-  min-height: calc(100vh - /* height of footer */);
-  display: flex;
-  flex-direction: column;
-  padding-top:20px /* height of footer */;
-`;
-
-const FooterContainer = styled.footer`
-  background-color: #333333;
-  color: white;
-  padding: 20px;
-  width: 100%;
-`;
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const FooterText = styled.div`
-  font-family: 'DM Sans', sans-serif;
-`;
-
-const SocialMediaLinks = styled.div`
-  a {
-    text-decoration: none;
-    color: white;
-    margin-right: 20px;
-    font-size: 24px;
-  }
-  a:hover {
-    color: #7848f4;
-  }
-`;
+import { Link } from 'react-router-dom';
+import { Typography, Button } from '@mui/material';
+import { Facebook, Twitter, LinkedIn, Instagram } from '@mui/icons-material';
+import './footer.css';
 
 const Footer = () => {
   return (
-    <MainContent>
-      {/* Your other components/content go here */}
+    <footer className="footer">
+      <div className="footer-container">
+        {/* Footer Text */}
+        <div className="footer-text">
+          <Typography variant="h6" component="p" align="center">
+            &copy; 2024 UtsavVibes. All rights reserved.
+          </Typography>
+        </div>
 
-      <FooterContainer>
-        <Container>
-          <FooterText>&copy; 2024 UtsavVibes</FooterText>
+        {/* Social Media Links */}
+        <div className="footer-social">
+          <Link to="https://www.facebook.com" aria-label="Visit our Facebook page">
+            <Facebook />
+          </Link>
+          <Link to="https://www.twitter.com" aria-label="Visit our Twitter page">
+            <Twitter />
+          </Link>
+          <Link to="https://www.linkedin.com" aria-label="Visit our LinkedIn page">
+            <LinkedIn />
+          </Link>
+          <Link to="https://www.instagram.com" aria-label="Visit our Instagram page">
+            <Instagram />
+          </Link>
+        </div>
 
-          <SocialMediaLinks>
-            <a href="https://www.facebook.com" aria-label="Visit our Facebook page" >
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a href="https://www.twitter.com" aria-label="Visit our twitter page">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.linkedin.com" aria-label="Visit our linkedin page">
-              <i className="fab fa-linkedin"></i>
-            </a>
-            <a href="https://www.instagram.com" aria-label="Visit our instagram page">
-              <i className="fab fa-instagram"></i>
-            </a>
-          </SocialMediaLinks>
-        </Container>
-      </FooterContainer>
-    </MainContent>
+        {/* Footer Buttons */}
+        <div className="footer-buttons">
+          <Button variant="outlined" color="primary" className="footer-btn">
+            Privacy Policy
+          </Button>
+          <Button variant="outlined" color="primary" className="footer-btn">
+            Terms of Service
+          </Button>
+        </div>
+      </div>
+    </footer>
   );
 };
 

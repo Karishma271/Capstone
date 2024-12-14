@@ -1,16 +1,17 @@
+// Required Modules
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
+const cors = require ("cors");
 const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
-
-
+require("dotenv").config(); // Load environment variables
 
 // Models
 const User = require("./models/User");
-const Venue = require('./models/Venue');
-
+const Venue = require("./models/Venue");
+const hallsRoute = require('./routes/halls');
+// Event Models
 const weddingEvents = mongoose.model("weddingEvents", {
   brideName: String,
   groomName: String,
@@ -43,55 +44,75 @@ const Organizer = mongoose.model("Organizer", {
   website: String,
 });
 
-
 // Create Express app
 const app = express();
 
+// CORS Setup
+const corsOptions = {
+  origin: 'https://www.utsavvibes.tech', // Allow requests from this domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  credentials: true, // Allow credentials such as cookies
+};
+
+
+// Use CORS middleware with the options
+app.use(cors(corsOptions));
+
+// Enable CORS middleware
+app.use(cors(corsOptions));
+
 // Middleware
 app.use(express.json());
-app.use(cors());
-app.use("/images", express.static("public/images"));
+// Serve static files (images, etc.)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Serve images
 
 // File upload setup
-const upload = multer({ dest: "public/" });
+const upload = multer({ dest: "uploads" });
 
 // MongoDB Connection
 mongoose
-  .connect("mongodb+srv://admin:admin@cluster0.xy8yjbh.mongodb.net/shubh?retryWrites=true&w=majority", {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+// Welcome message route
+app.get("/", (req, res) => {
+  res.send("Hello, welcome to the UtsavVibes backend!");
+});
+
 // Import and use routes
 const authRoutes = require("./routes/auth");
 app.use("/api", authRoutes);
 
 // Venue Routes
+const venueRoutes = require("./routes/venue");
+app.use("/api/venues", venueRoutes);
 
-const venueRoutes = require('./routes/venue');
-app.use('/api/venues', venueRoutes);
 // Fetch venues
-app.get('/api/venues', async (req, res) => {
+app.get("/api/venues", async (req, res) => {
   try {
     const venues = await Venue.find();
     res.status(200).json(venues);
   } catch (error) {
-    console.error('Error fetching venues:', error);
-    res.status(500).json({ message: 'Error fetching venues', error: error.message });
+    console.error("Error fetching venues:", error);
+    res.status(500).json({ message: "Error fetching venues", error: error.message });
   }
 });
 
+app.use('/api/halls', hallsRoute);
 // POST a new venue
 app.post("/api/venues", async (req, res) => {
   try {
-    console.log(req.body); // Log the incoming data
     const newVenue = new Venue(req.body);
     await newVenue.save();
     res.status(201).json(newVenue);
   } catch (error) {
-    console.error('Error creating venue:', error);
+    console.error("Error creating venue:", error);
     res.status(400).json({ error: error.message });
   }
 });
@@ -125,17 +146,25 @@ app.post("/api/upload-image", upload.single("image"), (req, res) => {
       return res.status(400).json({ error: "No file uploaded" });
     }
 
-    const uniqueFilename = `${Date.now()}-${req.file.originalname}`;
-    const targetPath = path.join(__dirname, "public", "images", uniqueFilename);
-
-    fs.renameSync(req.file.path, targetPath);
-
-    res.status(200).json({ imageUrl: `/images/${uniqueFilename}` });
+    const imageUrl = `/uploads/${req.file.filename}`; // Construct the URL
+    res.status(200).json({ imageUrl }); // Return the image URL to the frontend
   } catch (error) {
     console.error("Error uploading image:", error);
     res.status(500).json({ error: error.message || "Internal Server Error" });
   }
 });
+
+app.get("/api/users", async (req, res) => {
+  try {
+    const users = await User.find(); // Fetch all users from the database
+    res.status(200).json(users); // Return the users as JSON
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ message: "Error fetching users", error: error.message });
+  }
+});
+
+
 
 // Event Registration Routes
 app.post("/wedding", async (req, res) => {
