@@ -20,7 +20,10 @@
 
 ### Version Control:
 - GitHub
-
+  
+## Live Project Link
+- Live Project Link: [https://utsavvibes.tech](https://utsavvibes.tech)
+  
 ## Client Side Features
 - User registration and login with JWT tokens
 - Event creation and management
